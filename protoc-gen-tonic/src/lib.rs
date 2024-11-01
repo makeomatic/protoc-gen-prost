@@ -141,6 +141,17 @@ impl str::FromStr for Parameters {
                     param: "no_include",
                     value: "false",
                 } => (),
+                Param::Parameter {
+                    param: "generate_default_stubs",
+                }
+                | Param::Value {
+                    param: "generate_default_stubs",
+                    value: "true",
+                } => ret_val.generate_default_stubs = true,
+                Param::Value {
+                    param: "generate_default_stubs",
+                    value: "false",
+                } => (),
                 Param::KeyValue {
                     param: "client_mod_attribute",
                     key: prefix,
