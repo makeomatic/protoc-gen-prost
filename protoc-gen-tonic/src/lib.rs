@@ -35,6 +35,7 @@ pub fn execute(raw_request: &[u8]) -> protoc_gen_prost::Result {
         client_attributes: params.client_attributes,
         emit_package: !params.disable_package_emission,
         insert_include: !params.no_include,
+        generate_default_stubs: params.generate_default_stubs,
     };
 
     let files = generator.generate(&module_request_set)?;
@@ -57,6 +58,7 @@ struct Parameters {
     no_client: bool,
     no_transport: bool,
     no_include: bool,
+    generate_default_stubs: bool,
 }
 
 impl str::FromStr for Parameters {

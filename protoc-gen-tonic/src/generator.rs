@@ -19,6 +19,7 @@ pub(crate) struct TonicGenerator {
     pub(crate) client_attributes: Attributes,
     pub(crate) emit_package: bool,
     pub(crate) insert_include: bool,
+    pub(crate) generate_default_stubs: bool,
 }
 
 impl Generator for TonicGenerator {
@@ -161,6 +162,7 @@ impl TonicGenerator {
                                 .build_transport(self.generate_transport)
                                 .compile_well_known_types(self.resolver.compile_well_known_types())
                                 .attributes(self.server_attributes.clone())
+                                .generate_default_stubs(self.generate_default_stubs)
                                 .generate_server(&service, PROTO_PATH)
                         });
 
